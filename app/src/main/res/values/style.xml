@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Style untuk SubmitFeedbackButton -->
+    <style name="MainButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:textColor">#FFFFFF</item> <!-- Warna teks -->
+        <item name="android:backgroundTint">#0F8696</item> <!-- Warna background -->
+        <item name="shapeAppearanceOverlay">@style/RoundedCorners7dp</item> <!-- Sudut rounded -->
+        <item name="android:fontFamily">@font/urbanistbold</item>
+    </style>
+
+    <!-- Style untuk RateThisPlaceButton -->
+    <style name="RateThisPlaceButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:textColor">#0F8696</item> <!-- Warna teks -->
+        <item name="android:strokeWidth">2</item> <!-- Ketebalan garis tepi -->
+        <item name="android:strokeColor">#0F8696</item> <!-- Warna garis tepi -->
+        <item name="shapeAppearanceOverlay">@style/RoundedCorners7dp</item> <!-- Sudut rounded -->
+        <item name="android:fontFamily">@font/urbanistbold</item>
+    </style>
+
+    <!-- Style tambahan untuk sudut rounded -->
+    <style name="RoundedCorners7dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">7dp</item>
+    </style>
+</resources>

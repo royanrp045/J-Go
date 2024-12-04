@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp" />
+            <gradient
+                android:startColor="@android:color/transparent"
+                android:endColor="@color/main"/>
+        </shape>
+    </item>
+
+    <!-- Main Background -->
+    <item> <!-- Offset untuk shadow -->
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Warna latar -->
+            <corners android:radius="24dp" />
+            <stroke
+                android:color="@color/main"
+                android:width="2dp" />
+        </shape>
+    </item>
+</layer-list>
+
+
