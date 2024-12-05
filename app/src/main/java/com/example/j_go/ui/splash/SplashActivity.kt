@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.example.j_go.MainActivity
 import com.example.j_go.R
+import com.example.j_go.ui.register.RegisterActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToMainActivity() {
-        Intent(this, MainActivity::class.java).also {
+        Intent(this, RegisterActivity::class.java).also {
             startActivity(it)
             finish()
         }

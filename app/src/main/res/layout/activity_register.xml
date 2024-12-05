@@ -96,25 +96,7 @@
             android:inputType="textPassword"
             android:background="@drawable/bg_edit_text"
             android:padding="12dp"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/date_of_birth"
-            android:layout_marginBottom="4dp"
-            android:textSize="14sp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/dobInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/dd_mm_yyyy"
-            android:inputType="date"
-            android:background="@drawable/bg_edit_text"
-            android:padding="12dp"
-            android:layout_marginBottom="26dp" />
+            android:layout_marginBottom="80dp" />
 
         <!-- Sign Up Button -->
         <Button

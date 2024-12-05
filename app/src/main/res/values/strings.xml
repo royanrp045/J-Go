@@ -44,4 +44,10 @@
     <string name="rp100_000">Rp100.000</string>
     <string name="sleman_diy">Sleman, DIY</string>
     <string name="gunung_merapi_adalah_gunung_berapi_paling_aktif_di_indonesia_yang_menawarkan_panorama_indah_dan_pengalaman_mendaki_yang_menantang_gunung_merapi_adalah_gunung_berapi_paling_aktif_di_indonesia_yang_menawarkan_panorama_indah_dan_pengalaman_mendaki_yang_menantang">Gunung Merapi adalah gunung berapi paling aktif di Indonesia, yang menawarkan panorama indah dan pengalaman mendaki yang menantang. Gunung Merapi adalah gunung berapi paling aktif di Indonesia, yang menawarkan panorama indah dan pengalaman mendaki yang menantang</string>
+    <string name="error_email_empty">Email tidak boleh kosong</string>
+    <string name="error_password_empty">Password tidak boleh kosong</string>
+    <string name="error_name_empty">Nama tidak boleh kosong</string>
+    <string name="login_success">Login berhasil</string>
+    <string name="login_failed">Login gagal</string>
+    <string name="register_success">Registrasi berhasil</string>
 </resources>
