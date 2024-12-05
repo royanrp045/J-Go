@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "736276549996",
+    "project_id": "j-go-login-dan-resgister",
+    "storage_bucket": "j-go-login-dan-resgister.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736276549996:android:ab3f365b7d7c287a602349",
+        "android_client_info": {
+          "package_name": "com.example.j_go"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2awIFCgvG1uiJWj-1YtBQdZC8bFBmUnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

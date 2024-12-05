@@ -37,4 +37,11 @@
     <string name="_3_star">3_star</string>
     <string name="_2_star">2_star</string>
     <string name="_1_star">1_star</string>
+    <string name="rate_this_place">Rate This Place!</string>
+    <string name="submit_feedback">Submit Feedback</string>
+    <string name="feedback">Feedback</string>
+    <string name="merapi_mountain">Merapi Mountain</string>
+    <string name="rp100_000">Rp100.000</string>
+    <string name="sleman_diy">Sleman, DIY</string>
+    <string name="gunung_merapi_adalah_gunung_berapi_paling_aktif_di_indonesia_yang_menawarkan_panorama_indah_dan_pengalaman_mendaki_yang_menantang_gunung_merapi_adalah_gunung_berapi_paling_aktif_di_indonesia_yang_menawarkan_panorama_indah_dan_pengalaman_mendaki_yang_menantang">Gunung Merapi adalah gunung berapi paling aktif di Indonesia, yang menawarkan panorama indah dan pengalaman mendaki yang menantang. Gunung Merapi adalah gunung berapi paling aktif di Indonesia, yang menawarkan panorama indah dan pengalaman mendaki yang menantang</string>
 </resources>
