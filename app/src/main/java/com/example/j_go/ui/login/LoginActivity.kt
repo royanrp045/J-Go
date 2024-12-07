@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.j_go.MainActivity
 import com.example.j_go.R
 import com.example.j_go.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -42,12 +43,18 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Login berhasil
                         Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
-                        // TODO: Navigasi ke halaman utama
+
+                        // Navigasi ke MainActivity
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear back stack
+                        startActivity(intent)
+                        finish() // Tutup LoginActivity
                     } else {
                         // Login gagal
                         Toast.makeText(this, "Login gagal: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
+
         }
 
         // Handle Sign Up link click
