@@ -4,9 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
 
+    <!-- SupportMapFragment as background -->
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Search Bar (Custom Style) -->
     <androidx.appcompat.widget.SearchView
@@ -25,7 +35,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp" />
 
-
     <!-- Icon Filter -->
     <FrameLayout
         android:layout_width="30dp"
@@ -36,17 +45,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp">
 
-
         <ImageView
             android:id="@+id/filterIcon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/filter"
             android:contentDescription="@string/filter"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
     </FrameLayout>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
