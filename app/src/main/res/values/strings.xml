@@ -50,4 +50,5 @@
     <string name="login_success">Login berhasil</string>
     <string name="login_failed">Login gagal</string>
     <string name="register_success">Registrasi berhasil</string>
+    <string name="logo_applikasi">Logo applikasi</string>
 </resources>

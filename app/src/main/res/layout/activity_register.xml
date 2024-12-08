@@ -20,7 +20,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/logo"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/logo_applikasi"/>
 
         <!-- Title -->
         <TextView
@@ -58,6 +59,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_name"
             android:background="@drawable/bg_edit_text"
+            android:inputType="textCapWords"
+            android:autofillHints="name"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
@@ -76,6 +79,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_email"
             android:background="@drawable/bg_edit_text"
+            android:inputType="textEmailAddress"
+            android:autofillHints="emailAddress"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
@@ -94,6 +99,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
+            android:autofillHints="password"
             android:background="@drawable/bg_edit_text"
             android:padding="12dp"
             android:layout_marginBottom="80dp" />
@@ -103,11 +109,11 @@
             android:id="@+id/signUpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up"
-            android:background="@drawable/button_rounded"
             android:layout_marginBottom="24dp"
+            android:background="@drawable/button_rounded"
             android:padding="12dp"
-            android:textColor="@android:color/white" />
+            android:text="@string/sign_up"
+            android:textColor="#000000" />
 
         <!-- Already have an account? -->
         <LinearLayout
