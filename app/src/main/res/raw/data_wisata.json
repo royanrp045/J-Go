@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Taman Pintar Yogyakarta",
+    "category": "Taman Hiburan",
+    "ticket_price": 6000,
+    "latitude": -7.8006715,
+    "longitude": 110.3676551,
+    "description": "Wahana wisata edukasi dengan 35 zona dan 3.500 alat peraga yang cocok untuk anak-anak.",
+    "image_res": "benteng"
+  },
+  {
+    "name": "Keraton Yogyakarta",
+    "category": "Budaya",
+    "ticket_price": 15000,
+    "latitude": -7.8052845,
+    "longitude": 110.3642031,
+    "description": "Istana resmi Kesultanan Ngayogyakarta Hadiningrat yang juga berfungsi sebagai museum dengan koleksi budaya yang berharga.",
+    "image_res": "benteng"
+  },
+  {
+    "name": "Sindu Kusuma Edupark (SKE)",
+    "category": "Taman Hiburan",
+    "ticket_price": 20000,
+    "latitude": -7.7672973,
+    "longitude": 110.3542486,
+    "description": "Taman rekreasi dengan bianglala ikonik Cakra Manggilingan, setinggi 48 meter.",
+    "image_res": "benteng"
+  },
+  {
+    "name": "Museum Benteng Vredeburg",
+    "category": "Budaya",
+    "ticket_price": 3000,
+    "latitude": -7.8002016,
+    "longitude": 110.3663044,
+    "description": "Museum sejarah yang menampilkan diorama tentang perjalanan Indonesia.",
+    "image_res": "benteng"
+  },
+  {
+    "name": "De Mata Museum Jogja",
+    "category": "Budaya",
+    "ticket_price": 50000,
+    "latitude": -7.8163156,
+    "longitude": 110.3871442,
+    "description": "Museum dengan koleksi 3D painting unik yang menawarkan pengalaman visual interaktif.",
+    "image_res": "benteng"
+  },
+  {
+    "name": "Kampung Wisata Taman Sari",
+    "category": "Taman Hiburan",
+    "ticket_price": 5000,
+    "latitude": -7.8100673,
+    "longitude": 110.3594581,
+    "description": "Bekas kebun istana Keraton Ngayogyakarta Hadiningrat yang kaya akan sejarah dan keindahan arsitektur.",
+    "image_res": "benteng"
+  },
+  {
+    "name": "Situs Warungboto",
+    "category": "Taman Hiburan",
+    "ticket_price": 0,
+    "latitude": -7.8102685,
+    "longitude": 110.3931513,
+    "description": "Situs budaya berupa bekas pesanggrahan dan pemandian di Yogyakarta.",
+    "image_res": "benteng"
+  }
+]

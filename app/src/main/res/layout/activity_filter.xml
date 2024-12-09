@@ -168,6 +168,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/rate_background"
             android:text="@string/_5_star"
+            app:backgroundTint="@color/second"
             tools:ignore="TextContrastCheck" />
 
         <Button

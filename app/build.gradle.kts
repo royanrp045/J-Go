@@ -36,7 +36,9 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
+
 }
 
 dependencies {
@@ -53,6 +55,8 @@ dependencies {
     implementation(libs.firebase.database)
     implementation (libs.play.services.maps)
     implementation(libs.firebase.auth.ktx)
+    implementation (libs.gson)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
