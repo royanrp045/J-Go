@@ -6,6 +6,7 @@ data class Wisata(
     val ticket_price: Int,
     val latitude: Double,
     val longitude: Double,
-    val description: String
+    val description: String,
+    val image_res: String
 )
 
