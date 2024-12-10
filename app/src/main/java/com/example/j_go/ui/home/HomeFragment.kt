@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.j_go.R
-import com.example.j_go.database.Wisata
+import com.example.j_go.database.Place
 import com.example.j_go.databinding.FragmentHomeBinding
 import com.example.j_go.ui.filter.FilterActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -27,11 +27,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
 
     private lateinit var googleMap: GoogleMap
-    private val wisataList = mutableListOf<Wisata>()
+    private val wisataList = mutableListOf<Place>()
 
     private val filterLauncher =
         registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == AppCompatActivity.RESULT_OK) { // Perbaikan ada di sini
+            if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 val data = result.data
                 val category = data?.getStringExtra("category")
                 val minPrice = data?.getIntExtra("minPrice", 0) ?: 0
@@ -67,7 +67,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private fun loadWisataData() {
         val inputStream = resources.openRawResource(R.raw.data_wisata)
         val reader = InputStreamReader(inputStream)
-        val wisataArray = Gson().fromJson(reader, Array<Wisata>::class.java)
+        val wisataArray = Gson().fromJson(reader, Array<Place>::class.java)
         wisataList.addAll(wisataArray)
     }
 
@@ -79,13 +79,13 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private fun applyFilter(category: String?, minPrice: Int, maxPrice: Int, rate: Double) {
         val filteredList = wisataList.filter { wisata ->
             (category == null || wisata.category == category) &&
-                    wisata.ticket_price in minPrice..maxPrice &&
-                    wisata.rate >= rate
+                    wisata.price in minPrice..maxPrice &&
+                    wisata.place_rate >= rate
         }
         updateMapMarkers(filteredList)
     }
 
-    private fun updateMapMarkers(filteredList: List<Wisata>) {
+    private fun updateMapMarkers(filteredList: List<Place>) {
         googleMap.clear()
         val boundsBuilder = LatLngBounds.Builder()
         for (wisata in filteredList) {
@@ -93,8 +93,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             googleMap.addMarker(
                 MarkerOptions()
                     .position(lokasi)
-                    .title(wisata.name)
-                    .snippet(wisata.description)
+                    .title(wisata.place_name)
+                    .snippet(wisata.description_indonesia)
             )
             boundsBuilder.include(lokasi)
         }

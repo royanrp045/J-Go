@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.j_go.R
-import com.example.j_go.database.WisataAdapter
+import com.example.j_go.database.PlaceAdapter
 import com.example.j_go.database.loadJsonFromRaw
 import com.example.j_go.databinding.FragmentDashboardBinding
 
@@ -28,7 +28,7 @@ class DashboardFragment : Fragment() {
         val places = loadJsonFromRaw(requireContext(), R.raw.data_wisata)
 
         // Set up RecyclerView
-        val adapter = WisataAdapter(places)
+        val adapter = PlaceAdapter(places)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 

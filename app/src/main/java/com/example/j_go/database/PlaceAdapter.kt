@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.j_go.databinding.ItemPlaceBinding
 
-class WisataAdapter(private val places: List<Wisata>) : RecyclerView.Adapter<WisataAdapter.PlaceViewHolder>() {
+class PlaceAdapter(private val places: List<Place>) : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>() {
 
     class PlaceViewHolder(val binding: ItemPlaceBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -16,10 +16,10 @@ class WisataAdapter(private val places: List<Wisata>) : RecyclerView.Adapter<Wis
 
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         val place = places[position]
-        holder.binding.textName.text = place.name
+        holder.binding.textName.text = place.place_name
         holder.binding.textCategory.text = place.category
-        holder.binding.textPrice.text = "Rp ${place.ticket_price}"
-        holder.binding.textRate.text = "Rating: ${place.rate}"
+        holder.binding.textPrice.text = "Rp ${place.price}"
+        holder.binding.textRate.text = "Rating: ${place.place_rate}"
         holder.binding.imagePlace.setImageResource(
             holder.itemView.context.resources.getIdentifier(
                 place.image_res, "drawable", holder.itemView.context.packageName
