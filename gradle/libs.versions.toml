@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+cardview = "1.0.0"
 firebaseBom = "33.6.0"
 googleServices = "4.3.15"
 gson = "2.10.1"
@@ -13,6 +14,7 @@ material = "1.12.0"
 constraintlayout = "2.2.0"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
+materialVersion = "1.9.0"
 navigationFragmentKtx = "2.8.3"
 navigationUiKtx = "2.8.3"
 activity = "1.9.3"
@@ -22,6 +24,7 @@ firebaseAuthKtx = "23.1.0"
 playServicesMaps = "19.0.0"
 
 [libraries]
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
@@ -41,6 +44,7 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 
 [plugins]

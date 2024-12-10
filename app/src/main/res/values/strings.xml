@@ -27,8 +27,8 @@
     <string name="budaya">Budaya</string>
     <string name="taman_hiburan">Taman Hiburan</string>
     <string name="price">Price</string>
-    <string name="min">MIN</string>
-    <string name="max">MAX</string>
+    <string name="min">Min Price</string>
+    <string name="max">Max Price</string>
     <string name="rate">Rate</string>
     <string name="_5_star">5 star</string>
     <string name="use">Use</string>

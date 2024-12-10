@@ -56,6 +56,8 @@ dependencies {
     implementation (libs.play.services.maps)
     implementation(libs.firebase.auth.ktx)
     implementation (libs.gson)
+    implementation (libs.material.v190)
+    implementation (libs.androidx.cardview)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

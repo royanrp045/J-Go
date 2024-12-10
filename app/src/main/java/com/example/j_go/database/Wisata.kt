@@ -7,6 +7,7 @@ data class Wisata(
     val latitude: Double,
     val longitude: Double,
     val description: String,
-    val image_res: String
+    val image_res: String,
+    val rate: Double
 )
 
