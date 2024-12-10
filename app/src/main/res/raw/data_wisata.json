@@ -6,6 +6,7 @@
     "latitude": -7.8006715,
     "longitude": 110.3676551,
     "description": "Wahana wisata edukasi dengan 35 zona dan 3.500 alat peraga yang cocok untuk anak-anak.",
+    "description_en": "An educational amusement park with 35 zones and 3,500 exhibits, perfect for children.",
     "image_res": "benteng",
     "rate": 4.5
   },
@@ -16,6 +17,7 @@
     "latitude": -7.8052845,
     "longitude": 110.3642031,
     "description": "Istana resmi Kesultanan Ngayogyakarta Hadiningrat yang juga berfungsi sebagai museum dengan koleksi budaya yang berharga.",
+    "description_en": "The official palace of the Sultanate of Ngayogyakarta Hadiningrat, which also functions as a museum with valuable cultural collections.",
     "image_res": "borobudor",
     "rate": 4.7
   },
@@ -26,6 +28,7 @@
     "latitude": -7.7672973,
     "longitude": 110.3542486,
     "description": "Taman rekreasi dengan bianglala ikonik Cakra Manggilingan, setinggi 48 meter.",
+    "description_en": "A recreational park with the iconic 48-meter-tall Ferris wheel, Cakra Manggilingan.",
     "image_res": "benteng",
     "rate": 4.2
   },
@@ -36,6 +39,7 @@
     "latitude": -7.8002016,
     "longitude": 110.3663044,
     "description": "Museum sejarah yang menampilkan diorama tentang perjalanan Indonesia.",
+    "description_en": "A history museum showcasing dioramas about Indonesia's journey.",
     "image_res": "benteng",
     "rate": 4.6
   },
@@ -46,8 +50,9 @@
     "latitude": -7.8163156,
     "longitude": 110.3871442,
     "description": "Museum dengan koleksi 3D painting unik yang menawarkan pengalaman visual interaktif.",
+    "description_en": "A museum with a collection of unique 3D paintings offering an interactive visual experience.",
     "image_res": "benteng",
-    "rate": 4.4
+    "rate": 4.0
   },
   {
     "name": "Kampung Wisata Taman Sari",
@@ -56,6 +61,7 @@
     "latitude": -7.8100673,
     "longitude": 110.3594581,
     "description": "Bekas kebun istana Keraton Ngayogyakarta Hadiningrat yang kaya akan sejarah dan keindahan arsitektur.",
+    "description_en": "The former garden of the Sultan's palace, Taman Sari, is rich in history and architectural beauty.",
     "image_res": "benteng",
     "rate": 4.5
   },
@@ -66,6 +72,7 @@
     "latitude": -7.8102685,
     "longitude": 110.3931513,
     "description": "Situs budaya berupa bekas pesanggrahan dan pemandian di Yogyakarta.",
+    "description_en": "A cultural site that used to be a resting place and bathing area in Yogyakarta.",
     "image_res": "benteng",
     "rate": 4.3
   }

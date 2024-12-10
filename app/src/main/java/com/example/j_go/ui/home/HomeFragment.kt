@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.j_go.R
 import com.example.j_go.database.Wisata
@@ -26,9 +27,19 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
 
     private lateinit var googleMap: GoogleMap
-
-    // Data wisata yang akan di-load
     private val wisataList = mutableListOf<Wisata>()
+
+    private val filterLauncher =
+        registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == AppCompatActivity.RESULT_OK) { // Perbaikan ada di sini
+                val data = result.data
+                val category = data?.getStringExtra("category")
+                val minPrice = data?.getIntExtra("minPrice", 0) ?: 0
+                val maxPrice = data?.getIntExtra("maxPrice", Int.MAX_VALUE) ?: Int.MAX_VALUE
+                val rate = data?.getDoubleExtra("rate", 0.0) ?: 0.0
+                applyFilter(category, minPrice, maxPrice, rate)
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,52 +49,46 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         return binding.root
     }
 
-    // Menggunakan loadWisataData untuk memuat data dari raw
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
+        binding.filterIcon.setOnClickListener {
+            val intent = Intent(requireContext(), FilterActivity::class.java)
+            filterLauncher.launch(intent)
+        }
+
+        loadWisataData()
+    }
+
     private fun loadWisataData() {
-        val inputStream = resources.openRawResource(R.raw.data_wisata) // Pastikan file data_wisata.json ada di folder raw
+        val inputStream = resources.openRawResource(R.raw.data_wisata)
         val reader = InputStreamReader(inputStream)
         val wisataArray = Gson().fromJson(reader, Array<Wisata>::class.java)
         wisataList.addAll(wisataArray)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Initialize Map
-        val mapFragment =
-            childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
-        // SearchView logic
-        binding.searchView.setOnQueryTextListener(object :
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // Implement search logic
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Implement dynamic search logic
-                return true
-            }
-        })
-
-        // Filter icon logic
-        binding.filterIcon.setOnClickListener {
-            val intent = Intent(requireContext(), FilterActivity::class.java)
-            startActivity(intent)
-        }
-
-        // Load JSON Data
-        loadWisataData()  // Panggil hanya sekali di onViewCreated
-    }
-
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
+        updateMapMarkers(wisataList)
+    }
 
-        // Tambahkan marker untuk setiap lokasi wisata
-        val boundsBuilder = LatLngBounds.Builder() // Untuk menentukan batas peta
-        for (wisata in wisataList) {
+    private fun applyFilter(category: String?, minPrice: Int, maxPrice: Int, rate: Double) {
+        val filteredList = wisataList.filter { wisata ->
+            (category == null || wisata.category == category) &&
+                    wisata.ticket_price in minPrice..maxPrice &&
+                    wisata.rate >= rate
+        }
+        updateMapMarkers(filteredList)
+    }
+
+    private fun updateMapMarkers(filteredList: List<Wisata>) {
+        googleMap.clear()
+        val boundsBuilder = LatLngBounds.Builder()
+        for (wisata in filteredList) {
             val lokasi = LatLng(wisata.latitude, wisata.longitude)
             googleMap.addMarker(
                 MarkerOptions()
@@ -91,12 +96,12 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     .title(wisata.name)
                     .snippet(wisata.description)
             )
-            boundsBuilder.include(lokasi) // Tambahkan setiap lokasi ke dalam bounds
+            boundsBuilder.include(lokasi)
         }
-
-        // Pusatkan kamera di antara semua lokasi
-        val bounds = boundsBuilder.build()
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100)) // 100 adalah padding
+        if (filteredList.isNotEmpty()) {
+            val bounds = boundsBuilder.build()
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+        }
     }
 
     override fun onDestroyView() {
