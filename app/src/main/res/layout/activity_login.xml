@@ -54,6 +54,15 @@
             android:textSize="14sp"
             android:textColor="@android:color/black" />
 
+        <TextView
+            android:id="@+id/emailError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="gone"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
         <EditText
             android:id="@+id/emailInput"
             android:layout_width="match_parent"
@@ -74,6 +83,15 @@
             android:textSize="14sp"
             android:textColor="@android:color/black" />
 
+        <TextView
+            android:id="@+id/passwordError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="gone"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
         <EditText
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
@@ -83,18 +101,8 @@
             android:autofillHints="textPassword"
             android:background="@drawable/bg_edit_text"
             android:padding="12dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="90dp" />
 
-        <!-- Forgot Password -->
-        <TextView
-            android:id="@+id/forgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginBottom="40dp"
-            android:text="@string/forgot_password"
-            android:textColor="#00838F"
-            android:textSize="14sp" />
 
         <!-- Sign In Button -->
         <Button
@@ -104,6 +112,7 @@
             android:layout_marginBottom="24dp"
             android:background="@drawable/button_rounded"
             android:padding="12dp"
+            android:textStyle="bold"
             android:text="@string/sign_in"
             tools:ignore="TextContrastCheck" />
 

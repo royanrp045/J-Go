@@ -1,5 +1,6 @@
 package com.example.j_go.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import com.example.j_go.R
 import com.example.j_go.database.PlaceAdapter
 import com.example.j_go.database.loadJsonFromRaw
 import com.example.j_go.databinding.FragmentDashboardBinding
+import com.example.j_go.ui.detail.DetailActivity
+import com.google.gson.Gson
 
 class DashboardFragment : Fragment() {
 
@@ -31,6 +34,13 @@ class DashboardFragment : Fragment() {
         val adapter = PlaceAdapter(places)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+
+        // Set up item click listener
+        adapter.setOnItemClickListener { place ->
+            val intent = Intent(requireContext(), DetailActivity::class.java)
+            intent.putExtra("PLACE_DATA", Gson().toJson(place))
+            startActivity(intent)
+        }
 
         return root
     }

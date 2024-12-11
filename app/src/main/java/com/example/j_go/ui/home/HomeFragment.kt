@@ -11,6 +11,7 @@ import com.example.j_go.R
 import com.example.j_go.database.Place
 import com.example.j_go.databinding.FragmentHomeBinding
 import com.example.j_go.ui.filter.FilterActivity
+import com.example.j_go.ui.detail.DetailActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.gson.Gson
 import java.io.InputStreamReader
 
@@ -28,6 +30,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var googleMap: GoogleMap
     private val wisataList = mutableListOf<Place>()
+    private var lastClickedMarker: Marker? = null // Untuk menyimpan marker terakhir yang diklik
 
     private val filterLauncher =
         registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) { result ->
@@ -61,8 +64,33 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             filterLauncher.launch(intent)
         }
 
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    searchPlaces(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    searchPlaces(it)
+                }
+                return true
+            }
+        })
+
         loadWisataData()
     }
+
+    private fun searchPlaces(query: String) {
+        val filteredList = wisataList.filter { place ->
+            place.place_name.contains(query, ignoreCase = true) ||
+                    place.description_indonesia.contains(query, ignoreCase = true)
+        }
+        updateMapMarkers(filteredList)
+    }
+
 
     private fun loadWisataData() {
         val inputStream = resources.openRawResource(R.raw.data_wisata)
@@ -74,6 +102,26 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
         updateMapMarkers(wisataList)
+
+        // Set listener untuk klik marker
+        googleMap.setOnMarkerClickListener { marker ->
+            lastClickedMarker = marker
+            // Menampilkan informasi ringkas atau highlight dari tempat
+            marker.showInfoWindow() // Menampilkan info window saat marker diklik
+            true
+        }
+
+        // Set listener untuk klik info window (highlight)
+        googleMap.setOnInfoWindowClickListener { marker ->
+            val place = wisataList.find { it.place_name == marker.title }
+            place?.let {
+                // Kirim data Place ke DetailActivity
+                val intent = Intent(requireContext(), DetailActivity::class.java)
+                val placeJson = Gson().toJson(it) // Mengubah objek Place menjadi JSON
+                intent.putExtra("PLACE_DATA", placeJson)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun applyFilter(category: String?, minPrice: Int, maxPrice: Int, rate: Double) {

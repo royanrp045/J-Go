@@ -33,8 +33,7 @@
           android:layout_height="44dp"
           android:layout_marginLeft="30dp"
           android:layout_marginTop="35dp"
-          android:layout_gravity="top|left"
-          android:scaleType="centerInside"
+          android:scaleType="center"
           android:background="@drawable/rounded_img"
           android:src="@drawable/baseline_arrow_back_ios_24" />
 
@@ -55,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nama_tempat"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:layout_alignParentStart="true"
             android:fontFamily="@font/urbanistbold"/>
@@ -80,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rating"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_alignParentStart="true"
             android:fontFamily="@font/urbanistsemibold"
@@ -115,10 +116,11 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="@string/deskripsi"
-          android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textSize="16sp"
           android:layout_marginTop="16dp"
           android:justificationMode="inter_word"
-          android:fontFamily="@font/urbanistsemibold"/>
+          android:fontFamily="@font/urbanistsemibold" />
 
       <EditText
           android:id="@+id/editText"
@@ -140,12 +142,28 @@
       <com.google.android.material.button.MaterialButton
           style="@style/MainButton"
           android:id="@+id/button"
+          android:textStyle="bold"
           android:text="@string/submitfeed" />
+
+      <!-- RatingBar untuk memberi rating -->
+      <android.widget.RatingBar
+          android:id="@+id/ratingBar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:numStars="5"
+          android:stepSize="1"
+          android:rating="0"
+          android:layout_marginTop="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_gravity="center"/>
 
       <com.google.android.material.button.MaterialButton
           style="@style/RateThisPlaceButton"
           android:id="@+id/buttonRate"
+          android:textStyle="bold"
           android:text="@string/submitrate" />
+
+
 
 
 

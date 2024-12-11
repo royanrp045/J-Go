@@ -2,10 +2,8 @@ package com.example.j_go.ui.register
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.j_go.R
 import com.example.j_go.ui.login.LoginActivity
@@ -26,6 +24,9 @@ class RegisterActivity : AppCompatActivity() {
         val nameInput: EditText = findViewById(R.id.nameInput)
         val emailInput: EditText = findViewById(R.id.emailInput)
         val passwordInput: EditText = findViewById(R.id.passwordInput)
+        val nameError: TextView = findViewById(R.id.nameError)
+        val emailError: TextView = findViewById(R.id.emailError)
+        val passwordError: TextView = findViewById(R.id.passwordError)
         val signUpButton: Button = findViewById(R.id.signUpButton)
         val signInLink: TextView = findViewById(R.id.signInLink)
 
@@ -35,10 +36,41 @@ class RegisterActivity : AppCompatActivity() {
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
 
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Semua kolom harus diisi!", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            // Reset errors
+            nameError.visibility = View.GONE
+            emailError.visibility = View.GONE
+            passwordError.visibility = View.GONE
+
+            // Validate inputs
+            var isValid = true
+            if (name.isEmpty()) {
+                nameError.setText(R.string.name_required)
+                nameError.visibility = View.VISIBLE
+                isValid = false
             }
+
+            if (email.isEmpty()) {
+                emailError.setText(R.string.email_required)
+                emailError.visibility = View.VISIBLE
+                isValid = false
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                emailError.setText(R.string.invalid_email)
+                emailError.visibility = View.VISIBLE
+                isValid = false
+            }
+
+            if (password.isEmpty()) {
+                passwordError.setText(R.string.password_required)
+                passwordError.visibility = View.VISIBLE
+                isValid = false
+            } else if (password.length < 8) {
+                passwordError.setText(R.string.password_too_short)
+                passwordError.visibility = View.VISIBLE
+                isValid = false
+            }
+
+
+            if (!isValid) return@setOnClickListener
 
             // Firebase Authentication untuk membuat pengguna baru
             auth.createUserWithEmailAndPassword(email, password)
