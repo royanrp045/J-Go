@@ -55,35 +55,36 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Inisialisasi map fragment
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        // Set action listener untuk filter icon
         binding.filterIcon.setOnClickListener {
             val intent = Intent(requireContext(), FilterActivity::class.java)
             filterLauncher.launch(intent)
         }
 
+        // Set query listener untuk pencarian
         binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    searchPlaces(it)
-                }
+                query?.let { searchPlaces(it) }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let {
-                    searchPlaces(it)
-                }
+                newText?.let { searchPlaces(it) }
                 return true
             }
         })
 
+        // Load data wisata
         loadWisataData()
     }
 
     private fun searchPlaces(query: String) {
+        // Filter wisata berdasarkan nama atau deskripsi
         val filteredList = wisataList.filter { place ->
             place.place_name.contains(query, ignoreCase = true) ||
                     place.description_indonesia.contains(query, ignoreCase = true)
@@ -91,8 +92,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         updateMapMarkers(filteredList)
     }
 
-
     private fun loadWisataData() {
+        // Membaca file raw dan mengonversi ke list Place
         val inputStream = resources.openRawResource(R.raw.data_wisata)
         val reader = InputStreamReader(inputStream)
         val wisataArray = Gson().fromJson(reader, Array<Place>::class.java)
@@ -106,18 +107,16 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         // Set listener untuk klik marker
         googleMap.setOnMarkerClickListener { marker ->
             lastClickedMarker = marker
-            // Menampilkan informasi ringkas atau highlight dari tempat
-            marker.showInfoWindow() // Menampilkan info window saat marker diklik
+            marker.showInfoWindow() // Tampilkan info window saat marker diklik
             true
         }
 
-        // Set listener untuk klik info window (highlight)
+        // Set listener untuk klik info window
         googleMap.setOnInfoWindowClickListener { marker ->
             val place = wisataList.find { it.place_name == marker.title }
             place?.let {
-                // Kirim data Place ke DetailActivity
                 val intent = Intent(requireContext(), DetailActivity::class.java)
-                val placeJson = Gson().toJson(it) // Mengubah objek Place menjadi JSON
+                val placeJson = Gson().toJson(it) // Convert Place object to JSON
                 intent.putExtra("PLACE_DATA", placeJson)
                 startActivity(intent)
             }
@@ -125,6 +124,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun applyFilter(category: String?, minPrice: Int, maxPrice: Int, rate: Double) {
+        // Filter berdasarkan kategori, harga, dan rating
         val filteredList = wisataList.filter { wisata ->
             (category == null || wisata.category == category) &&
                     wisata.price in minPrice..maxPrice &&
@@ -134,21 +134,24 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun updateMapMarkers(filteredList: List<Place>) {
-        googleMap.clear()
-        val boundsBuilder = LatLngBounds.Builder()
-        for (wisata in filteredList) {
-            val lokasi = LatLng(wisata.latitude, wisata.longitude)
-            googleMap.addMarker(
-                MarkerOptions()
-                    .position(lokasi)
-                    .title(wisata.place_name)
-                    .snippet(wisata.description_indonesia)
-            )
-            boundsBuilder.include(lokasi)
-        }
-        if (filteredList.isNotEmpty()) {
-            val bounds = boundsBuilder.build()
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+        // Bersihkan marker yang sudah ada dan buat yang baru
+        if (::googleMap.isInitialized) {
+            googleMap.clear()
+            val boundsBuilder = LatLngBounds.Builder()
+            for (wisata in filteredList) {
+                val lokasi = LatLng(wisata.latitude, wisata.longitude)
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(lokasi)
+                        .title(wisata.place_name)
+                        .snippet(wisata.description_indonesia)
+                )
+                boundsBuilder.include(lokasi)
+            }
+            if (filteredList.isNotEmpty()) {
+                val bounds = boundsBuilder.build()
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
+            }
         }
     }
 
